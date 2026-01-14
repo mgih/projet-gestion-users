@@ -1,75 +1,63 @@
-/* ============================================ */
-/* TODO GHITA: Completer les styles CSS */
-/* ============================================ */
+//* style.css - Création par Ghita */
+ * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+ }
 
-/* Reset et styles de base */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  /* TODO GHITA: Ajouter un background degrade */
-  /* Suggestion: linear-gradient(135deg, #667eea 0%, #764ba2 100%) */
-  min-height: 100vh;
-  padding: 20px;
-}
+ body {
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+   min-height: 100vh;
+   padding: 20px;
+ }
 
-#app {
-  max-width: 900px;
-  margin: 0 auto;
-}
 
-h1 {
-  /* TODO GHITA: Styliser le titre principal */
-  /* Suggestions: color, text-align, margin-bottom, font-size, text-shadow */
-}
+ #app {
+   max-width: 800px;
+   margin: 0 auto;
+   background: white;
+   padding: 30px;
+   border-radius: 15px;
+   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+ }
 
-.card {
-  /* TODO GHITA: Styliser les cartes */
-  /* Suggestions: background, padding, border-radius, box-shadow, margin-bottom */
-}
 
-.card h2 {
-  /* TODO GHITA: Styliser les sous-titres */
-}
+ h1 {
+   color: #667eea;
+   margin-bottom: 30px;
+   text-align: center;
+ }
 
-#userForm {
-  /* TODO GHITA: Mettre les champs en colonne avec gap */
-  display: flex;
-  flex-direction: column;
-}
 
-input {
-  /* TODO GHITA: Styliser les champs input */
-  /* Suggestions: padding, border, border-radius, font-size */
-}
+ #userForm {
+   display: flex;
+   gap: 10px;
+   margin-bottom: 30px;
+ }
 
-button {
-  /* TODO GHITA: Styliser les boutons */
-  /* Suggestions: padding, background, color, border, border-radius, cursor */
-}
 
-button:hover {
-  /* TODO GHITA: Ajouter effet hover */
-}
+ input {
+   flex: 1;
+   padding: 12px;
+   border: 2px solid #e0e0e0;
+   border-radius: 8px;
+   font-size: 14px;
+ }
 
-#usersList {
-  /* TODO GHITA: Styliser la liste des utilisateurs */
-}
 
-.user-item {
-  /* TODO GHITA: Styliser chaque element utilisateur */
-  /* Suggestions: display flex, justify-content, padding, background, border-radius */
-}
+ button {
+   padding: 12px 24px;
+   background: #667eea;
+   color: white;
+   border: none;
+   border-radius: 8px;
+   cursor: pointer;
+   font-weight: bold;
+ }
 
-.user-info {
-  /* TODO GHITA: Styliser les infos utilisateur */
-}
 
-.delete-btn {
-  /* TODO GHITA: Styliser le bouton supprimer */
-  /* Suggestion: background rouge #e74c3c */
-}
+ button:hover {
+   background: #5568d3;
+ }

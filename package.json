@@ -1,0 +1,19 @@
+{
+  "name": "projet-gestion-users",
+  "version": "1.0.0",
+  "description": "Application de gestion des utilisateurs - Atelier Git/GitHub",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": ["express", "api", "users", "gestion"],
+  "author": "Equipe Dev",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

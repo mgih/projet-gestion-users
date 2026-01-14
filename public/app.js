@@ -1,49 +1,93 @@
 // ============================================
-// TODO KENZA: Completer le code JavaScript
+// Gestion des utilisateurs - app.js
 // ============================================
 
-// Fonction pour charger les utilisateurs au demarrage
+// Charger les utilisateurs au démarrage
 document.addEventListener('DOMContentLoaded', () => {
   loadUsers();
 });
 
 // ============================================
-// TODO KENZA: Gerer la soumission du formulaire
+// Soumission du formulaire (POST /api/users)
 // ============================================
-// Instructions:
-//   1. Selectionner le formulaire avec getElementById('userForm')
-//   2. Ajouter un ecouteur d'evenement 'submit'
-//   3. Empecher le comportement par defaut avec e.preventDefault()
-//   4. Recuperer les valeurs des champs nom, email, password
-//   5. Faire un fetch POST vers '/api/users' avec les donnees
-//   6. Si reussi, afficher une alerte et recharger la liste
-//   7. Gerer les erreurs avec try/catch
+document.getElementById('userForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
 
+  const nom = document.getElementById('nom').value;
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  try {
+    const response = await fetch('/api/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ nom, email, password })
+    });
+
+    if (!response.ok) {
+      throw new Error('Erreur lors de l’ajout de l’utilisateur');
+    }
+
+    alert('Utilisateur ajouté avec succès');
+    document.getElementById('userForm').reset();
+    loadUsers();
+
+  } catch (error) {
+    alert(error.message);
+  }
+});
 
 // ============================================
-// TODO KENZA: Fonction pour charger les utilisateurs
+// Charger la liste des utilisateurs (GET)
 // ============================================
 async function loadUsers() {
-  // Instructions:
-  //   1. Faire un fetch GET vers '/api/users'
-  //   2. Convertir la reponse en JSON
-  //   3. Pour chaque utilisateur, creer un element HTML
-  //   4. Afficher: nom, email et bouton supprimer
-  //   5. Inserer dans la div id="usersList"
-  //   6. Ajouter onclick="deleteUser^(ID^)" sur le bouton supprimer
-Commande ECHO désactivée.
-  console.log('TODO: Implementer loadUsers()');
+  try {
+    const response = await fetch('/api/users');
+    const users = await response.json();
+
+    const usersList = document.getElementById('usersList');
+    usersList.innerHTML = '';
+
+    users.forEach(user => {
+      const div = document.createElement('div');
+      div.className = 'user-item';
+
+      div.innerHTML = `
+        <span>
+          <strong>${user.nom}</strong> - ${user.email}
+        </span>
+        <button onclick="deleteUser(${user.id})">Supprimer</button>
+      `;
+
+      usersList.appendChild(div);
+    });
+
+  } catch (error) {
+    alert('Erreur lors du chargement des utilisateurs');
+  }
 }
 
 // ============================================
-// TODO KENZA: Fonction pour supprimer un utilisateur
+// Supprimer un utilisateur (DELETE)
 // ============================================
 async function deleteUser(id) {
-  // Instructions:
-  //   1. Afficher une confirmation avec confirm()
-  //   2. Si confirme, faire un fetch DELETE vers '/api/users/' + id
-  //   3. Si reussi, afficher une alerte et recharger la liste
-  //   4. Gerer les erreurs
-Commande ECHO désactivée.
-  console.log('TODO: Implementer deleteUser(id)');
+  if (!confirm('Voulez-vous vraiment supprimer cet utilisateur ?')) return;
+
+  try {
+    const response = await fetch(`/api/users/${id}`, {
+      method: 'DELETE'
+    });
+
+    if (!response.ok) {
+      throw new Error('Erreur lors de la suppression');
+    }
+
+    alert('Utilisateur supprimé');
+    loadUsers();
+
+  } catch (error) {
+    alert(error.message);
+  }
 }
